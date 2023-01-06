@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6167465e-7d5a-4f7c-8407-bcc7979bbe51" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="pipeline-to-jenkinsFlow" doc:id="68d0bdb8-157f-43fc-ae8b-91196517918f" >
+		<http:listener doc:name="Listener" doc:id="ff708216-d812-49bb-b089-7b62f608ed62" config-ref="HTTP_Listener_config" path="/pipeline"/>
+		<logger level="INFO" doc:name="Logger" doc:id="c6656d33-a417-4f48-ab0e-aeeb2dc7fcce" message="suceess"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="4094ce95-c4d3-4153-ad44-27cd47a68b91" />
+	</flow>
+</mule>
